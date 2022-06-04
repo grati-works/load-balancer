@@ -26,9 +26,9 @@ const handler = async (request: Request, response: Response) => {
 
     return response.status(result.status).send(result.data);
   } catch (error) {
-    return response
-      .status(error.response.status || 500)
-      .send(error.response.data || error.message);
+    const status = error.response.status || 500;
+    const message = error.response.data || error.message;
+    return response.status(status).send(message);
   }
 };
 
