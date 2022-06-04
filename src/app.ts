@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import axios, { AxiosRequestHeaders } from 'axios';
