@@ -2,6 +2,7 @@
 import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import axios, { AxiosRequestHeaders } from 'axios';
+import https from 'https';
 
 const app = express();
 
@@ -10,6 +11,11 @@ const servers = JSON.parse(`[${process.env.SERVERS}]`);
 let current = 0;
 
 const handler = async (request: Request, response: Response) => {
+  const httpsAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+  axios.defaults.httpsAgent = httpsAgent;
+
   const { method, url, headers, body } = request;
 
   const server = servers[current];

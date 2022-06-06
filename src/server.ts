@@ -1,7 +1,7 @@
 import { logger } from './utils/logger';
 import { app } from './app';
 
-const { PORT } = process.env;
+const { PORT = 8080 } = process.env;
 
 app.listen(PORT, error => {
   error
